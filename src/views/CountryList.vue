@@ -1,0 +1,83 @@
+<template>
+  <div>
+    <v-data-table
+      @click:row="viewCountry"
+      :headers="headers"
+      :items="allCountries"
+      item-key="name"
+      class="elevation-1"
+      :search="search"
+      :custom-filter="filterText"
+    >
+      <template v-slot:top>
+        <v-text-field v-model="search" label="Search" class="mx-4"></v-text-field>
+      </template>
+    </v-data-table>
+  </div>
+</template>
+
+<script>
+import { mapGetters, mapActions } from 'vuex';
+
+export default {
+  name: 'CountryList',
+
+  data() {
+    return {
+      search: ''
+    };
+  },
+
+  computed: {
+    ...mapGetters(['allCountries']),
+
+    headers() {
+      return [
+        {
+          text: 'Code',
+          align: 'start',
+          sortable: true,
+          value: 'alpha2Code'
+        },
+        {
+          text: 'Name',
+          value: 'name',
+          sortable: true
+        },
+        { text: 'Region', value: 'region' },
+        { text: 'Capital', value: 'capital' },
+        { text: 'Population', value: 'population' }
+      ];
+    }
+  },
+
+  mounted() {
+    this.fetchCountries();
+  },
+
+  methods: {
+    ...mapActions(['fetchCountries', 'setCurrentCountry']),
+
+    filterText(value, search, item) {
+      return (
+        value != null &&
+        search != null &&
+        item != null &&
+        typeof value === 'string' &&
+        value
+          .toString()
+          .toLowerCase()
+          .indexOf(search) !== -1
+      );
+    },
+
+    viewCountry(country) {
+      if (!country) return;
+      console.log('viewCountry', country.alpha2Cod);
+
+      this.setCurrentCountry(country.alpha2Code);
+      this.$router.push({ path: `/country/${country.alpha2Code}` });
+    }
+  }
+};
+</script>
