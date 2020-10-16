@@ -1,10 +1,9 @@
 <template>
   <v-card flat class="pa-2">
-    <v-card-text>
+    <v-card-text class="mb-0 pb-0">
       <p>
         My name is Diana Sormani and I am a Software Engineer with 15 years of experience
-        developing software, both Back-End and Front-End.
-        <br />I am originally from Uruguay! Love my country. Although I'm living in the Netherlands.
+        developing software. I am originally from Uruguay! Love my country. Although I'm living in the Netherlands.
       </p>
 
       <p>
@@ -19,22 +18,26 @@
       </p>
 
       <p>
-        I also have a lot of experience with automated testing for Front-End. Particularly with Jest and
-        vue-test-utils. I've played around with Cypress and WebdriverIO.
+        I also have a lot of experience with automated testing for Front-End. Particularly with
+        <a
+          href="https://jestjs.io/"
+        >Jest</a> and
+        <a href="https://vue-test-utils.vuejs.org/">Vue Test Utils</a>.
+        I've played around with Cypress and WebdriverIO.
         <br />In my humble opinion, automated testing is super useful and should be a MUST. But is not
         yet able to replace manual testing... So that still needs to be done.
       </p>
 
       <p>
-        I've developed this project just to play around with
-        <a
-          href="https://vuetifyjs.com/en/"
-        >Vuetify</a> and I've found it to be quite great.
+        I normally work on Agile environments, so I am familiar with the process. I normally follow
+        and promote GitFlow.
+        <br />I also have experience setting up CI/CD pipelines on GitLab, though to be honest is not
+        my favorite part ;)
       </p>
 
       <p>Anyhow, if you are interested on my work, check out my Linkedin page.</p>
     </v-card-text>
-    <v-list>
+    <v-list class="pt-0 pr-0">
       <v-list-item class="pt-0 pr-0">
         <v-list-item-avatar color="primary" size="40">
           <img max-width="40" src="../assets/myAvatar.svg" alt="Diana Sormani" />
