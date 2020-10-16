@@ -9,6 +9,12 @@
       :search="search"
       :custom-filter="filterText"
     >
+      <template v-slot:item.population="{ item }">
+        <v-chip
+          :color="populationColor(item.population)"
+          dark
+        >{{ item.population.toLocaleString() }}</v-chip>
+      </template>
       <template v-slot:top>
         <v-text-field v-model="search" label="Search" class="mx-4"></v-text-field>
       </template>
@@ -18,6 +24,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import { getPopulationColor } from '@/utils/utils.js';
 
 export default {
   name: 'CountryList',
@@ -77,6 +84,10 @@ export default {
 
       this.setCurrentCountry(country.alpha2Code);
       this.$router.push({ path: `/country/${country.alpha2Code}` });
+    },
+
+    populationColor(population) {
+      return getPopulationColor(population);
     }
   }
 };

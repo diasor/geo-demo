@@ -7,17 +7,10 @@
             <v-card-title class="pb-0">{{ country.name }}</v-card-title>
           </v-list-item-title>
           <v-list-item-subtitle class="pt-0">
-            <v-card-subtitle class="pt-0"
-              >Capital: {{ country.capital }}</v-card-subtitle
-            >
+            <v-card-subtitle class="pt-0">Capital: {{ country.capital }}</v-card-subtitle>
           </v-list-item-subtitle>
         </v-list-item-content>
-        <v-img
-          class="mr-2"
-          max-height="80"
-          max-width="100"
-          :src="country.flag"
-        />
+        <v-img class="mr-2" max-height="80" max-width="100" :src="country.flag" />
       </v-list-item>
     </v-list>
     <v-divider class="ma-0"></v-divider>
@@ -25,29 +18,25 @@
     <v-list>
       <v-list-item>
         <v-list-item-title>Region: {{ country.region }}</v-list-item-title>
-        <v-list-item-title
-          >SubRegion: {{ country.subregion }}</v-list-item-title
-        >
-        <v-list-item-title class="text-right"
-          >Time Zone: {{ country.timezones[0] }}</v-list-item-title
-        >
+        <v-list-item-title>SubRegion: {{ country.subregion }}</v-list-item-title>
+        <v-list-item-title class="text-right">Time Zone: {{ country.timezones[0] }}</v-list-item-title>
       </v-list-item>
       <v-list-item>
         <v-list-item-title>Denonym: {{ country.demonym }}</v-list-item-title>
-        <v-list-item-title
-          >Population: {{ country.population }}</v-list-item-title
-        >
-        <v-list-item-title class="text-right"
-          >Area: {{ country.area }}</v-list-item-title
-        >
+        <v-list-item-title>
+          Population:
+          <v-chip
+            :color="populationColor(country.population)"
+            dark
+          >{{ country.population.toLocaleString() }}</v-chip>
+        </v-list-item-title>
+        <v-list-item-title class="text-right">Area: {{ country.area }}</v-list-item-title>
       </v-list-item>
     </v-list>
 
     <v-expansion-panels>
       <v-expansion-panel>
-        <v-expansion-panel-header>
-          Languages:
-        </v-expansion-panel-header>
+        <v-expansion-panel-header>Languages:</v-expansion-panel-header>
         <v-expansion-panel-content>
           <v-item-group multiple>
             <v-item
@@ -59,18 +48,14 @@
                 active-class="purple--text"
                 :input-value="active"
                 @click="toggle"
-              >
-                {{ language.name }}
-              </v-chip>
+              >{{ language.name }}</v-chip>
             </v-item>
           </v-item-group>
         </v-expansion-panel-content>
       </v-expansion-panel>
 
       <v-expansion-panel>
-        <v-expansion-panel-header>
-          Borders:
-        </v-expansion-panel-header>
+        <v-expansion-panel-header>Borders:</v-expansion-panel-header>
         <v-expansion-panel-content>
           <v-item-group multiple>
             <v-item
@@ -78,22 +63,14 @@
               :key="i"
               v-slot:default="{ active, toggle }"
             >
-              <v-chip
-                active-class="purple--text"
-                :input-value="active"
-                @click="toggle"
-              >
-                {{ border }}
-              </v-chip>
+              <v-chip active-class="purple--text" :input-value="active" @click="toggle">{{ border }}</v-chip>
             </v-item>
           </v-item-group>
         </v-expansion-panel-content>
       </v-expansion-panel>
 
       <v-expansion-panel>
-        <v-expansion-panel-header>
-          Currencies:
-        </v-expansion-panel-header>
+        <v-expansion-panel-header>Currencies:</v-expansion-panel-header>
         <v-expansion-panel-content>
           <v-item-group multiple>
             <v-item
@@ -105,9 +82,7 @@
                 active-class="purple--text"
                 :input-value="active"
                 @click="toggle"
-              >
-                {{ currency.name }} ({{ currency.symbol }})
-              </v-chip>
+              >{{ currency.name }} ({{ currency.symbol }})</v-chip>
             </v-item>
           </v-item-group>
         </v-expansion-panel-content>
@@ -117,26 +92,29 @@
 </template>
 
 <script>
+import { getPopulationColor } from '@/utils/utils.js';
+
 export default {
-  name: "CountryInformation",
+  name: 'CountryInformation',
 
   props: {
     country: {
       type: Object,
-      default: () => {},
+      default: () => {}
     },
 
     countryBorders: {
       type: Array,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
 
-  data: () => ({
-    showMoreCurrencies: false,
-    showBorders: false,
-  }),
-}
+  methods: {
+    populationColor(population) {
+      return getPopulationColor(population);
+    }
+  }
+};
 </script>
 <style>
 .v-expansion-panel-header {

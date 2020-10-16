@@ -11,18 +11,18 @@
           width="50"
         />
 
-        <div class="shrink mt-1 hidden-sm-and-down" @click="backToMainMenu">
+        <div class="shrink mt-1 hidden-sm-and-down" @click="gotToMainManu">
           <h3>World Geo Information</h3>
         </div>
       </div>
 
       <v-spacer></v-spacer>
 
-      <v-btn
-        href="https://github.com/diasor/geo-demo/releases/latest"
-        target="_blank"
-        text
-      >
+      <v-btn @click="goToAbout" text>
+        <span class="mr-2">About</span>
+      </v-btn>
+
+      <v-btn href="https://github.com/diasor/geo-demo/releases/latest" target="_blank" text>
         <span class="mr-2">Latest Release</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
@@ -37,15 +37,17 @@
 </template>
 
 <script>
-// import CountryList from './views/CountryList';
-
 export default {
-  name: "App",
+  name: 'App',
 
   methods: {
-    backToMainMenu() {
-      this.$router.push({ path: "/" })
+    gotToMainManu() {
+      this.$router.push({ path: '/' });
     },
-  },
-}
+
+    goToAbout() {
+      this.$router.push({ path: '/about' });
+    }
+  }
+};
 </script>
