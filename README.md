@@ -12,6 +12,9 @@ This application provides the list of the world countries. It allows the user to
 
 Also the application shows an interactive map of the country.
 
+Additionally, it shows the current COVID19 information live (with data from the day before). The user can
+search for the most affected countries and see a whole tab of the country's COVID records.
+
 The application was built using:
 
 - [Vue](https://vuejs.org/)

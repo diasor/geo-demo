@@ -1,3 +1,5 @@
 module.exports = {
-  transpileDependencies: ["vuetify", "x5-gmaps"],
+  transpileDependencies: ["vuetify"],
+  publicPath: "",
+  outputDir:  "world-countries"
 }

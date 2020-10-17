@@ -12,6 +12,11 @@
           :countryBorders="countryBorders"
         />
       </v-carousel-item>
+      <v-carousel-item class="ma-2 pa-0"> 
+       <country-covid-information
+          :country="currentCountry"
+        />
+      </v-carousel-item>
       <v-carousel-item class="ma-0 pa-0">
         <country-map :country="currentCountry" />
       </v-carousel-item>
@@ -26,6 +31,7 @@
 <script>
 import { mapGetters } from "vuex"
 import CountryInformation from "@/components/CountryInformation"
+import CountryCovidInformation from "@/components/CountryCovidInformation"
 import CountryMap from "@/components/CountryMap"
 
 export default {
@@ -33,6 +39,7 @@ export default {
 
   components: {
     CountryInformation,
+    CountryCovidInformation,
     CountryMap,
   },
 

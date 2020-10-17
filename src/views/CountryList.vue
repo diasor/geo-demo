@@ -15,6 +15,12 @@
           dark
         >{{ item.population.toLocaleString() }}</v-chip>
       </template>
+            <template v-slot:item.todayConfirmed="{ item }">
+        <v-chip
+          :color="covidColor(item.todayConfirmed)"
+          dark
+        >{{ item.todayConfirmedFormat }}</v-chip>
+      </template>
       <template v-slot:top>
         <v-text-field v-model="search" label="Search" class="mx-4"></v-text-field>
       </template>
@@ -24,7 +30,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import { getPopulationColor } from '@/utils/utils.js';
+import { getPopulationColor, getCovidColor } from '@/utils/utils.js';
 
 export default {
   name: 'CountryList',
@@ -41,19 +47,21 @@ export default {
     headers() {
       return [
         {
-          text: 'Code',
-          align: 'start',
+          text: "Code",
+          align: "start",
           sortable: true,
-          value: 'alpha2Code'
+          value: "alpha2Code"
         },
         {
-          text: 'Name',
-          value: 'name',
+          text: "Name",
+          value: "name",
           sortable: true
         },
-        { text: 'Region', value: 'region' },
-        { text: 'Capital', value: 'capital' },
-        { text: 'Population', value: 'population' }
+        { text: "Region", value: "region" },
+        { text: "Capital", value: "capital" },
+        { text: "Population", value: "population" },
+        { text: " COVID Cases", value: "todayConfirmed",  sortable: true },
+        { text: " COVID Deaths", value: "todayDeathsFormat",  sortable: true }
       ];
     }
   },
@@ -80,14 +88,16 @@ export default {
 
     viewCountry(country) {
       if (!country) return;
-      console.log('viewCountry', country.alpha2Cod);
-
       this.setCurrentCountry(country.alpha2Code);
       this.$router.push({ path: `/country/${country.alpha2Code}` });
     },
 
     populationColor(population) {
       return getPopulationColor(population);
+    },
+
+    covidColor(covidNumber) {
+      return getCovidColor(covidNumber)
     }
   }
 };
