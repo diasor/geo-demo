@@ -22,6 +22,7 @@ The application was built using:
 - Vue Router
 - [Vuetify](https://vuetifyjs.com/en/)
 - [An api that list the countries](https://restcountries.eu/#rest-countries)
+- [An api that provides all the COVID19 information](https://api.covid19tracking.narrativa.com/api/)
 - [VueLayers](https://vuelayers.github.io/#/)
 - Git
 
