@@ -13,7 +13,7 @@ This application provides the list of the world countries. It allows the user to
 Also the application shows an interactive map of the country.
 
 Additionally, it shows the current COVID19 information live (with data from the day before). The user can
-search for the most affected countries and see a whole tab of the country's COVID records.
+search for the most affected countries and see a whole tab of the country's COVID records. The application also shows an overview of the 10 countries which have had more COVID cases reported so far.
 
 The application was built using:
 
@@ -24,6 +24,7 @@ The application was built using:
 - [An api that list the countries](https://restcountries.eu/#rest-countries)
 - [An api that provides all the COVID19 information](https://api.covid19tracking.narrativa.com/api/)
 - [VueLayers](https://vuelayers.github.io/#/)
+- [VueChartJS](https://www.npmjs.com/package/vue-chartjs/)
 - Git
 
 ## Project setup

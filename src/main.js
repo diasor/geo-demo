@@ -18,6 +18,7 @@ import {
   PointGeom,
 } from "vuelayers"
 import "vuelayers/lib/style.css"
+// import VueBarChartJs from "vue-chartjs"
 
 Vue.use(Map)
 Vue.use(TileLayer)
@@ -31,6 +32,7 @@ Vue.use(VectorSource)
 Vue.use(VectorLayer)
 Vue.use(SelectInteraction)
 Vue.use(PointGeom)
+// Vue.use(VueBarChartJs)
 
 Vue.config.productionTip = false
 

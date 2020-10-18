@@ -1,8 +1,8 @@
 import Vue from "vue"
 import VueRouter from "vue-router"
-import CountryList from "../views/CountryList.vue"
-import ViewCountry from "../views/ViewCountry.vue"
-import CountryMap from "../components/CountryMap.vue"
+import CountryList from "@/views/CountryList.vue"
+import ViewCountry from "@/views/ViewCountry.vue"
+import CountryMap from "@/components/CountryMap.vue"
 
 Vue.use(VueRouter)
 
@@ -23,11 +23,15 @@ const routes = [
     component: CountryMap,
   },
   {
+    path: "/covid-overview",
+    name: "covid-overview",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/ViewCOVIDOverview.vue"),
+  },
+  
+  {
     path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+    name: "about",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },

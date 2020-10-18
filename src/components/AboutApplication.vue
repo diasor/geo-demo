@@ -31,6 +31,9 @@
               COVID19 development per country. This information can be found on the main grid per country
               but also there is a full tab of COVID information on each country page.
             </v-list-item-subtitle>
+            <v-list-item-subtitle>- The application also shows an overview of the 10 countries which have had 
+              more COVID cases reported so far.
+            </v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
 
@@ -57,6 +60,9 @@
             </v-item>
             <v-item>
               <v-chip active-class="purple--text">VueLayers</v-chip>
+            </v-item>
+            <v-item>
+              <v-chip active-class="purple--text">VueChartJs</v-chip>
             </v-item>
             <v-item>
               <v-chip active-class="purple--text">REST Country API</v-chip>

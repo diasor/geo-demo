@@ -5,7 +5,7 @@
           <template v-slot:activator="{ on, attrs }">
             <div 
               class="d-flex align-center"  
-              @click="gotToMainManu"
+              @click="gotToMainMenu"
               v-bind="attrs" 
               v-on="on"
             >
@@ -13,20 +13,31 @@
                 alt="World app Logo"
                 class="shrink mr-2"
                 contain
-                src="@/assets/happy-world-2.svg"
+                src="@/assets/world-country.svg"
                 transition="scale-transition"
                 width="50"
               />
             <div class="shrink mt-1 hidden-xs-and-down">
-              <h3>World Geo Information</h3>
+              <h3>COVID19 Tracker</h3>
             </div>
           </div>
         </template>
          <span>Go to the Main Country grid page</span>
        </v-tooltip>
-
       <v-spacer></v-spacer>
-
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn 
+            @click="gotToOverViewMenu" 
+            text
+            v-bind="attrs" 
+            v-on="on"
+          >
+            <span>COVID19 Overview</span>
+          </v-btn>
+        </template>
+         <span>Go to the COVID19 Overview page</span>
+      </v-tooltip>
       <v-btn @click="goToAbout" text>
         <span>About</span>
       </v-btn>
@@ -50,8 +61,12 @@ export default {
   name: 'App',
 
   methods: {
-    gotToMainManu() {
+    gotToMainMenu() {
       this.$router.push({ path: '/' });
+    },
+
+    gotToOverViewMenu() {
+      this.$router.push({ path: '/covid-overview' });
     },
 
     goToAbout() {
