@@ -1,6 +1,6 @@
 <template>
-  <v-card flat class="pa-2">
-    <v-card-text class="mb-0 pb-0">
+  <v-card flat>
+    <v-card-text>
       <p>
         My name is Diana Sormani and I am a Software Engineer with 15 years of experience
         developing software. I am originally from Uruguay! Love my country. Although I'm living in the Netherlands.
@@ -40,7 +40,7 @@
     <v-list class="pt-0 pr-0">
       <v-list-item class="pt-0 pr-0">
         <v-list-item-avatar color="primary" size="40">
-          <img max-width="40" src="../assets/myAvatar.svg" alt="Diana Sormani" />
+          <img max-width="40" src="../../assets/myAvatar.svg" alt="Diana Sormani" />
         </v-list-item-avatar>
         <v-list-item-icon>
           <v-icon large color="blue" @click="goToLinkedin()">mdi-linkedin</v-icon>
@@ -60,16 +60,16 @@
 
 <script>
 export default {
-  name: 'AboutAuthor',
+  name: "AboutAuthor",
 
   methods: {
-    goToLinkedin() {
-      window.open('https://www.linkedin.com/in/dianasormani/');
+    goToLinkedin () {
+      window.open("https://www.linkedin.com/in/dianasormani/")
     },
 
-    goToGitHub() {
-      window.open('https://github.com/diasor/');
+    goToGitHub () {
+      window.open("https://github.com/diasor/")
     }
   }
-};
+}
 </script>

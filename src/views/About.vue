@@ -1,13 +1,8 @@
 <template>
-  <v-card min-width="600" class="ma-2 pl-10 pr-10 pb-2 pt-2">
-    <v-tabs v-model="tab">
-      <v-tab>
-        <v-card-title class="pb-0">About the Application</v-card-title>
-        <v-divider class="ma-0"></v-divider>
-      </v-tab>
-      <v-tab>
-        <v-card-title class="pb-0">About the Author</v-card-title>
-      </v-tab>
+  <section>
+    <v-tabs class="d-flex justify-start flex-wrap" v-model="tab" >
+      <v-tab>About the Application</v-tab>
+      <v-tab>About the Author</v-tab>
     </v-tabs>
 
     <v-tabs-items v-model="tab">
@@ -18,14 +13,14 @@
         <about-author />
       </v-tab-item>
     </v-tabs-items>
-  </v-card>
+  </section>
 </template>
 
 <script>
-import AboutApplication from '@/components/AboutApplication.vue';
-import AboutAuthor from '@/components/AboutAuthor.vue';
+import AboutApplication from "@/components/About/AboutApplication.vue"
+import AboutAuthor from "@/components/About/AboutAuthor.vue"
 export default {
-  name: 'About',
+  name: "About",
 
   components: {
     AboutApplication,
@@ -35,6 +30,5 @@ export default {
   data: () => ({
     tab: null
   })
-};
+}
 </script>
-

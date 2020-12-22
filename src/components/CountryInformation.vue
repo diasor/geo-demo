@@ -117,13 +117,13 @@ export default {
 };
 </script>
 <style>
-.v-expansion-panel-header {
-  color: rgba(0, 0, 0, 0.87) !important;
-  font-size: 1rem;
-}
+  .v-expansion-panel-header {
+    color: rgba(0, 0, 0, 0.87) !important;
+    font-size: 1rem;
+  }
 
-.v-expansion-panel::before {
-  box-shadow: none !important;
-  border: none !important;
-}
+  .v-expansion-panel::before {
+    box-shadow: none !important;
+    border: none !important;
+  }
 </style>
