@@ -22,7 +22,7 @@
       </v-carousel-item>
     </v-carousel>
 
-    <v-btn text color="purple" @click="backToMainMenu" class="mt-0"
+    <v-btn text color="purple" @click="backToMainMenu" class="mt-2"
       >Back to Country List</v-btn
     >
   </div>
@@ -30,9 +30,9 @@
 
 <script>
 import { mapGetters } from "vuex"
-import CountryInformation from "@/components/CountryInformation"
-import CountryCovidInformation from "@/components/CountryCovidInformation"
-import CountryMap from "@/components/CountryMap"
+import CountryInformation from "@/components/Country/CountryInformation"
+import CountryCovidInformation from "@/components/Country/CountryCovidInformation"
+import CountryMap from "@/components/Country/CountryMap"
 
 export default {
   name: "ViewCountry",

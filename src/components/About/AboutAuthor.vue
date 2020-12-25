@@ -40,7 +40,7 @@
     <v-list class="pt-0 pr-0">
       <v-list-item class="pt-0 pr-0">
         <v-list-item-avatar color="primary" size="40">
-          <img max-width="40" src="../../assets/myAvatar.svg" alt="Diana Sormani" />
+          <img max-width="40" src="../../assets/diana-avatar.png" alt="Diana Sormani" />
         </v-list-item-avatar>
         <v-list-item-icon>
           <v-icon large color="blue" @click="goToLinkedin()">mdi-linkedin</v-icon>

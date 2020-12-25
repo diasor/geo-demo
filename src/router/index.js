@@ -2,7 +2,7 @@ import Vue from "vue"
 import VueRouter from "vue-router"
 import CountryList from "@/views/CountryList.vue"
 import ViewCountry from "@/views/ViewCountry.vue"
-import CountryMap from "@/components/CountryMap.vue"
+import CountryMap from "@/components/Country/CountryMap.vue"
 
 Vue.use(VueRouter)
 

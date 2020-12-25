@@ -1,5 +1,5 @@
 <template>
-  <v-card min-width="600" class="ma-0 pa-0">
+  <v-card  class="ma-0 pa-0">
     <v-card-title class="ma-0 pa-0">{{ country.name }}</v-card-title>
     <v-card-text class="ma-0 pa-0">
       <vl-map data-projection="EPSG:4326" style="height: 400px">

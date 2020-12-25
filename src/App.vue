@@ -9,17 +9,7 @@
               v-bind="attrs" 
               v-on="on"
             >
-              <v-img
-                alt="World app Logo"
-                class="shrink mr-2"
-                contain
-                src="@/assets/world-country.svg"
-                transition="scale-transition"
-                width="50"
-              />
-            <div class="shrink mt-1 hidden-xs-and-down">
-              <h3>COVID19 Tracker</h3>
-            </div>
+              <h3 class="shrink">COVID19 Tracker</h3>
           </div>
         </template>
          <span>Go to the Main Country grid page</span>
@@ -27,24 +17,34 @@
       <v-spacer></v-spacer>
       <v-tooltip bottom>
         <template v-slot:activator="{ on, attrs }">
-          <v-btn 
+          <v-btn
+          class="pr-0"
             @click="gotToOverViewMenu" 
             text
             v-bind="attrs" 
             v-on="on"
           >
-            <span>COVID19 Overview</span>
+            <span class="shrink">Overview</span>
           </v-btn>
         </template>
-         <span>Go to the COVID19 Overview page</span>
+         <span>Go to the COVID19 Overview page to see the current graph</span>
       </v-tooltip>
-      <v-btn @click="goToAbout" text>
+      <v-btn
+        class="pr-0"
+        @click="goToAbout" 
+        text
+      >
         <span>About</span>
       </v-btn>
 
-      <v-btn href="https://github.com/diasor/geo-demo/releases/latest" target="_blank" text>
+      <v-btn
+        class="text-small-devices"
+        href="https://github.com/diasor/geo-demo/releases/latest" 
+        target="_blank" 
+        text
+      >
         <span class="shrink hidden-sm-and-down mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
+        <v-icon class="release-icon">mdi-open-in-new</v-icon>
       </v-btn>
     </v-app-bar>
 
@@ -75,3 +75,19 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+  .text-small-devices {
+    display: none !important;
+    width: 0 !important;
+
+    @media screen and (min-width: 450px) {
+      display: flex !important;
+      width: auto !important;
+    }
+  }
+
+  .release-icon {
+    padding-left: 5px;
+  }
+</style>
