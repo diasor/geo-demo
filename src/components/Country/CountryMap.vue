@@ -1,41 +1,52 @@
 <template>
-  <v-card  class="ma-0 pa-0">
-    <v-card-title class="ma-0 pa-0">{{ country.name }}</v-card-title>
-    <v-card-text class="ma-0 pa-0">
-      <vl-map data-projection="EPSG:4326" style="height: 400px">
-        <vl-view
-          :zoom="zoom"
-          :center="center"
-          :rotation.sync="rotation"
-        ></vl-view>
+  <div class="country-map-container">
+    <country-header
+      :countryName="country.name"
+      :countryCapital="country.capital"
+      :countryFlag="country.flag"
+    />
+    <v-divider class="ml-4 pb-0" />
 
-        <vl-layer-tile>
-          <vl-source-osm></vl-source-osm>
-        </vl-layer-tile>
+    <vl-map data-projection="EPSG:4326" style="height: 400px">
+      <vl-view
+        :zoom="zoom"
+        :center="center"
+        :rotation.sync="rotation"
+      ></vl-view>
 
-        <vl-layer-vector>
-          <vl-source-vector>
-            <vl-feature>
-              <vl-geom-point
-                :coordinates="feature.geometry.coordinates"
-              ></vl-geom-point>
-            </vl-feature>
+      <vl-layer-tile>
+        <vl-source-osm></vl-source-osm>
+      </vl-layer-tile>
 
-            <vl-style-box>
-              <vl-style-icon
-                src="https://img.icons8.com/office/50/000000/place-marker.png"
-              ></vl-style-icon>
-            </vl-style-box>
-          </vl-source-vector>
-        </vl-layer-vector>
-      </vl-map>
-    </v-card-text>
-  </v-card>
+      <vl-layer-vector>
+        <vl-source-vector>
+          <vl-feature>
+            <vl-geom-point
+              :coordinates="feature.geometry.coordinates"
+            ></vl-geom-point>
+          </vl-feature>
+
+          <vl-style-box>
+            <vl-style-icon
+              src="https://img.icons8.com/office/50/000000/place-marker.png"
+            ></vl-style-icon>
+          </vl-style-box>
+        </vl-source-vector>
+      </vl-layer-vector>
+    </vl-map>
+  </div>
 </template>
 
 <script>
+import CountryHeader from "./CountryHeader.vue"
+
 export default {
   name: "CountryMap",
+
+  components: { 
+    CountryHeader,
+  },
+
   props: {
     country: {
       type: Object,
@@ -75,3 +86,13 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+  .country-map-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 4rem;
+    padding: 0;
+    height: 100%;
+  }
+</style>

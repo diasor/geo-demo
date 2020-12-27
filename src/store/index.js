@@ -61,51 +61,57 @@ export default new Vuex.Store({
   },
 
   actions: {
-    setCurrentCountry({ state, commit }, code) {
-      const country = state.countryList.find((item) => item.alpha2Code === code)
-      commit("SET_CURRENT_COUNTRY", country)
+    async fetchCountries({ state, commit }) {
+      if (state.countryList.length === 0) {
+        const covidDate = new Date().toISOString().split('T')[0]
+        return api.getCountryList()
+        .then((response) => commit("SET_COUNTRY_LIST", Object.values(response.data)))
+        .then(() => api.getCountryCovidInformation(covidDate))
+        .then(covidResponse => {
+          // const total = covidResponse.data.total
+          const covidPerCountry = covidResponse.data.dates[covidDate].countries
+          const countries = state.countryList.map((iterCountry) => {
+            let covidCountry = covidPerCountry[iterCountry.name]
+            if (!covidCountry) {
+              // several country codes differ between apis, so some matching has to be done
+              if (iterCountry.name === "United Kingdom of Great Britain and Northern Ireland") {
+                covidCountry = covidPerCountry["United Kingdom"]
+              } else if (iterCountry.name === "United States of America") {
+                covidCountry = covidPerCountry["US"]
+              } else if (iterCountry.name === "Congo (Democratic Republic of the)") {
+                covidCountry = covidPerCountry["Congo (Brazzaville)"]
+              } else if (iterCountry.name === "Bolivia (Plurinational State of)") {
+                  covidCountry = covidPerCountry["Bolivia"]
+              }
+            }
+            const noCovidData = (covidCountry === undefined)
+            return {
+              newConfirmed: noCovidData ? -1 : covidCountry.today_new_confirmed,
+              newConfirmedFormat: noCovidData ? "No Data" : covidCountry.today_new_confirmed.toLocaleString(),
+              newDeath: noCovidData ? -1 : covidCountry.today_new_deaths,
+              newDeathFormat: noCovidData ? "No Data" : covidCountry.today_new_deaths.toLocaleString(),
+              todayConfirmed: noCovidData ? -1 : covidCountry.today_confirmed,
+              todayConfirmedFormat: noCovidData ? "No Data" : covidCountry.today_confirmed.toLocaleString(),
+              todayDeaths: noCovidData ? -1 : covidCountry.today_deaths,
+              todayDeathsFormat: noCovidData ? "No Data" : covidCountry.today_deaths.toLocaleString(),
+              openCases: noCovidData ? "No Data" : covidCountry.today_open_cases.toLocaleString(),
+              totalRecovered: noCovidData ? "No Data" : covidCountry.yesterday_recovered.toLocaleString(),
+              ...iterCountry
+            }
+          })
+          commit("SET_COUNTRY_LIST", countries)
+          commit("SET_COVID_DATE", covidDate)
+        })
+      }
     },
 
-    async fetchCountries({ state, commit }) {
-      const covidDate = new Date().toISOString().split('T')[0]
-      return api.getCountryList()
-      .then((response) => commit("SET_COUNTRY_LIST", Object.values(response.data)))
-      .then(() => api.getCountryCovidInformation(covidDate))
-      .then(covidResponse => {
-        // const total = covidResponse.data.total
-        const covidPerCountry = covidResponse.data.dates[covidDate].countries
-        const countries = state.countryList.map((iterCountry) => {
-          let covidCountry = covidPerCountry[iterCountry.name]
-          if (!covidCountry) {
-            // several country codes differ between apis, so some matching has to be done
-            if (iterCountry.name === "United Kingdom of Great Britain and Northern Ireland") {
-              covidCountry = covidPerCountry["United Kingdom"]
-            } else if (iterCountry.name === "United States of America") {
-              covidCountry = covidPerCountry["US"]
-            } else if (iterCountry.name === "Congo (Democratic Republic of the)") {
-              covidCountry = covidPerCountry["Congo (Brazzaville)"]
-            } else if (iterCountry.name === "Bolivia (Plurinational State of)") {
-                covidCountry = covidPerCountry["Bolivia"]
-            }
-          }
-          const noCovidData = (covidCountry === undefined)
-          return {
-            newConfirmed: noCovidData ? -1 : covidCountry.today_new_confirmed,
-            newConfirmedFormat: noCovidData ? "No Data" : covidCountry.today_new_confirmed.toLocaleString(),
-            newDeath: noCovidData ? -1 : covidCountry.today_new_deaths,
-            newDeathFormat: noCovidData ? "No Data" : covidCountry.today_new_deaths.toLocaleString(),
-            todayConfirmed: noCovidData ? -1 : covidCountry.today_confirmed,
-            todayConfirmedFormat: noCovidData ? "No Data" : covidCountry.today_confirmed.toLocaleString(),
-            todayDeaths: noCovidData ? -1 : covidCountry.today_deaths,
-            todayDeathsFormat: noCovidData ? "No Data" : covidCountry.today_deaths.toLocaleString(),
-            openCases: noCovidData ? "No Data" : covidCountry.today_open_cases.toLocaleString(),
-            totalRecovered: noCovidData ? "No Data" : covidCountry.yesterday_recovered.toLocaleString(),
-            ...iterCountry
-          }
-        })
-        commit("SET_COUNTRY_LIST", countries)
-        commit("SET_COVID_DATE", covidDate)
-      })
+    async setCurrentCountry({ state, commit, dispatch }, code) {
+      if (state.countryList.length === 0) {
+        await dispatch("fetchCountries")
+      }
+
+      const country = state.countryList.find((item) => item.alpha2Code === code)
+      commit("SET_CURRENT_COUNTRY", country)
     },
 
     async generateMostInfected({ state, commit, dispatch }) {
@@ -113,9 +119,9 @@ export default new Vuex.Store({
       if (state.countryList.length === 0) {
         await dispatch("fetchCountries")
         countryList = filterAndOrderInfected(state.countryList)
-      } else {
-        countryList = filterAndOrderInfected(state.countryList)
-      }
+
+      } 
+      countryList = filterAndOrderInfected(state.countryList)
       commit("SET_MOST_INFECTED_LIST", countryList)
     }
   }

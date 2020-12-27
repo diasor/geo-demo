@@ -1,5 +1,8 @@
 <template>
-  <div v-show="currentCountry">
+  <v-card  
+    v-if="showCountry" 
+    class="ma-0 pa-0"
+  >
     <v-carousel
       hide-delimiters
       :dark="$vuetify.theme.dark"
@@ -23,13 +26,13 @@
     </v-carousel>
 
     <v-btn text color="purple" @click="backToMainMenu" class="mt-2"
-      >Back to Country List</v-btn
-    >
-  </div>
+      >Back to Country List
+    </v-btn>
+  </v-card>
 </template>
 
 <script>
-import { mapGetters } from "vuex"
+import { mapGetters, mapActions } from "vuex"
 import CountryInformation from "@/components/Country/CountryInformation"
 import CountryCovidInformation from "@/components/Country/CountryCovidInformation"
 import CountryMap from "@/components/Country/CountryMap"
@@ -46,6 +49,7 @@ export default {
   data: () => ({
     showMoreCurrencies: false,
     showBorders: false,
+    showCountry: false,
   }),
 
   computed: {
@@ -62,7 +66,20 @@ export default {
     },
   },
 
+  async created() {
+    if (this.currentCountry.name === "") {
+      this.showCountry = false
+      const alpha2Code = this.$route.params.code
+      await this.setCurrentCountry(alpha2Code)
+      this.showCountry = true
+    } else {
+      this.showCountry = true
+    }
+  },
+
   methods: {
+    ...mapActions(["setCurrentCountry"]),
+
     backToMainMenu() {
       this.$router.push({ path: "/" })
     },

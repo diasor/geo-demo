@@ -15,14 +15,18 @@
           dark
         >{{ item.population.toLocaleString() }}</v-chip>
       </template>
-            <template v-slot:item.todayConfirmed="{ item }">
+      <template v-slot:item.todayConfirmed="{ item }">
         <v-chip
           :color="covidColor(item.todayConfirmed)"
           dark
         >{{ item.todayConfirmedFormat }}</v-chip>
       </template>
       <template v-slot:top>
-        <v-text-field v-model="search" label="Search" class="mx-4"></v-text-field>
+        <v-text-field 
+          v-model="search" 
+          label="Search" 
+          class="mx-4"
+        ></v-text-field>
       </template>
     </v-data-table>
   </div>
@@ -74,6 +78,7 @@ export default {
     ...mapActions(['fetchCountries', 'setCurrentCountry']),
 
     filterText(value, search, item) {
+      const searchLowerCase = search.toLowerCase()
       return (
         value != null &&
         search != null &&
@@ -82,14 +87,14 @@ export default {
         value
           .toString()
           .toLowerCase()
-          .indexOf(search) !== -1
+          .indexOf(searchLowerCase) !== -1
       );
     },
 
     viewCountry(country) {
       if (!country) return;
-      this.setCurrentCountry(country.alpha2Code);
-      this.$router.push({ path: `/country/${country.alpha2Code}` });
+      this.setCurrentCountry(country.alpha2Code)
+      this.$router.push({ path: `/country/${country.alpha2Code}` })
     },
 
     populationColor(population) {
