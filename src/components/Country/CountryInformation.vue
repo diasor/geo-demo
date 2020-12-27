@@ -8,17 +8,17 @@
     <v-divider class="ml-4 pb-0" />
 
     <v-container class="ml-1 pb-0">
-      <v-row no-gutters class="d-flex flex-wrap mt-3">
-        <v-col class="d-flex pr-1 flex-shrink-0"> Region: </v-col>
-        <v-col class="d-flex pr-1 flex-shrink-0"><b> {{ country.region }} </b></v-col>
-        <v-col class="d-flex pr-1 flex-shrink-0"> SubRegion: </v-col>
-        <v-col class="d-flex pr-1 flex-shrink-0"><b>  {{ country.subregion }} </b></v-col>
+      <v-row no-gutters class="mt-2">
+        <v-col cols="6" md="3"> Region: </v-col>
+        <v-col cols="6" md="3"><b> {{ country.region }} </b></v-col>
+        <v-col cols="6" md="3"> SubRegion: </v-col>
+        <v-col cols="6" md="3"><b>  {{ country.subregion }} </b></v-col>
       </v-row>
-      <v-row no-gutters class="d-flex flex-wrap mt-3">
-        <v-col class="d-flex pr-1 flex-shrink-0"> Denonym: </v-col>
-        <v-col class="d-flex pr-1 flex-shrink-0"><b> {{ country.demonym }} </b></v-col>
-        <v-col class="d-flex pr-1 flex-shrink-0"> Population: </v-col>
-        <v-col class="d-flex pr-1 flex-shrink-0">
+      <v-row no-gutters class="mt-2">
+        <v-col cols="6" md="3"> Denonym: </v-col>
+        <v-col cols="6" md="3"><b> {{ country.demonym }} </b></v-col>
+        <v-col cols="6" md="3"> Population: </v-col>
+        <v-col cols="6" md="3">
           <v-chip
               :color="populationColor(country.population)"
               dark
@@ -28,11 +28,11 @@
         </v-col>
 
       </v-row>
-      <v-row no-gutters class="d-flex flex-wrap mt-3">
-        <v-col class="d-flex pr-1 flex-shrink-0"> Area: </v-col>
-        <v-col class="d-flex pr-1 flex-shrink-0"><b> {{ country.area }} </b></v-col>  
-        <v-col class="d-flex pr-1 flex-shrink-0">Time Zone: </v-col>
-        <v-col class="d-flex pr-1 flex-shrink-0"><b> {{ country.timezones[0] }} </b></v-col>
+      <v-row no-gutters class="mt-2">
+        <v-col cols="6" md="3"> Area: </v-col>
+        <v-col cols="6" md="3"><b> {{ country.area }} </b></v-col>  
+        <v-col cols="6" md="3">Time Zone: </v-col>
+        <v-col cols="6" md="3"><b> {{ country.timezones[0] }} </b></v-col>
       </v-row>
     </v-container>
 
@@ -44,6 +44,7 @@
         <v-chip
           v-for="(language, i) in country.languages"
           :key="i"
+          class="ml-0"
         >
           {{ language.name }}
         </v-chip>
@@ -58,6 +59,7 @@
         <v-chip
           v-for="(border, i) in countryBorders"
           :key="i"
+          class="ml-0"
         >
          {{ border }}
         </v-chip>

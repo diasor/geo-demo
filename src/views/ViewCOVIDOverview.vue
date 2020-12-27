@@ -2,9 +2,9 @@
   <v-card 
     v-if="showGraph" 
     min-width="200px" 
-    class="ma-2 pl-10 pr-10 pb-2 pt-2"
+    class="pa-2"
   >
-    <v-card-title > COVID19 Overview {{ covidDate }}</v-card-title>
+    <v-card-title> COVID19 Overview {{ covidDate }}</v-card-title>
     <bar-chart 
       v-if="mostCOVIDInfectedCountries"
       :labels="chartLabels"

@@ -8,11 +8,11 @@
     <v-divider class="ml-4 pb-0" />
 
     <v-container class="ml-1 pb-0">
-      <v-row no-gutters class="d-flex justify-space-between flex-wrap mt-3 ">
-        <v-col class="d-flex pr-1 flex-shrink-0"> Open Cases: </v-col>
-        <v-col class="d-flex pr-1 flex-shrink-0"><b> {{ country.openCases }} </b></v-col>
-        <v-col class="d-flex pr-1 flex-shrink-0"> Total Cases: </v-col>
-        <v-col class="d-flex pr-1 flex-shrink-0">
+      <v-row no-gutters>
+        <v-col cols="6" md="3" class="mt-2"> Open Cases: </v-col>
+        <v-col cols="6" md="3" class="mt-2"><b> {{ country.openCases }} </b></v-col>
+        <v-col cols="6" md="3" class="mt-2"> Total Cases: </v-col>
+        <v-col cols="6" md="3" class="mt-2">
           <v-chip
             :color="populationColor(country.todayConfirmed)"
             dark
@@ -20,31 +20,30 @@
             {{ country.todayConfirmedFormat }}
           </v-chip>
         </v-col>
-
       </v-row>
-      <v-row no-gutters class="d-flex justify-space-between flex-wrap mt-3 mb-3">
-        <v-col class="d-flex pr-1 flex-shrink-0"> New Cases: </v-col>
-        <v-col class="d-flex pr-1 flex-shrink-0"><b>  {{ country.newConfirmedFormat }} </b></v-col>
-        <v-col class="d-flex" />
-        <v-col class="d-flex" />
+      <v-row no-gutters>
+        <v-col cols="6" md="3" class="mt-2"> New Cases: </v-col>
+        <v-col cols="6" md="3" class="mt-2"><b>  {{ country.newConfirmedFormat }} </b></v-col>
+        <v-col />
+        <v-col /> 
       </v-row>
-      <v-row no-gutters class="d-flex justify-space-between flex-wrap mt-3 mb-3">
-        <v-col class="d-flex pr-1 flex-shrink-0"> New Deaths: </v-col>
-        <v-col class="d-flex pr-1 flex-shrink-0"><b> {{ country.newDeathFormat }} </b></v-col>
-        <v-col class="d-flex pr-1 flex-shrink-0"> Total Deaths: </v-col>
-        <v-col class="d-flex pr-1 flex-shrink-0"><b> {{ country.todayDeathsFormat }} </b></v-col>
+      <v-row no-gutters>
+        <v-col cols="6" md="3" class="mt-2"> New Deaths: </v-col>
+        <v-col cols="6" md="3" class="mt-2"><b> {{ country.newDeathFormat }} </b></v-col>
+        <v-col cols="6" md="3" class="mt-2"> Total Deaths: </v-col>
+        <v-col cols="6" md="3" class="mt-2"><b> {{ country.todayDeathsFormat }} </b></v-col>
       </v-row>
-      <v-row no-gutters class="d-flex justify-space-between flex-wrap mt-3 mb-3">
-        <v-col class="d-flex pr-1 flex-shrink-0"> New Recovered: </v-col>
-        <v-col class="d-flex pr-1 flex-shrink-0"><b>  {{ country.todayRecovered }} </b></v-col>
-        <v-col class="d-flex pr-1 flex-shrink-0"> Total Recovered: </v-col>
-        <v-col class="d-flex pr-1 flex-shrink-0"><b>  {{ country.totalRecovered }} </b></v-col>
+      <v-row no-gutters>
+        <v-col cols="6" md="3" class="mt-2"> New Recovered: </v-col>
+        <v-col cols="6" md="3" class="mt-2"><b>  {{ country.todayRecovered }} </b></v-col>
+        <v-col cols="6" md="3" class="mt-2"> Total Recovered: </v-col>
+        <v-col cols="6" md="3" class="mt-2"><b>  {{ country.totalRecovered }} </b></v-col>
       </v-row>      
-      <v-row no-gutters class="d-flex justify-space-between flex-wrap mt-3 mb-3">
-        <v-col class="d-flex pr-1 flex-shrink-0"> Source: </v-col>
-        <v-col class="d-flex pr-1 flex-shrink-0 justify-start"><b> {{ country.source }} </b></v-col>
-        <v-col class="d-flex" />
-        <v-col class="d-flex" />
+      <v-row no-gutters>
+        <v-col cols="6" md="3" class="mt-2"> Source: </v-col>
+        <v-col cols="6" md="3" class="mt-2"><b> {{ country.source }} </b></v-col>
+        <v-col />
+        <v-col />
       </v-row>
     </v-container>
   </div>
@@ -85,4 +84,11 @@ export default {
     height: 100%;
   }
 </style>
+
+<style lang="scss">
+  .v-chip {
+    max-height: 24px !important;
+  }
+</style>
+
 

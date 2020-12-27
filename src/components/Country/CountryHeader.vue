@@ -1,7 +1,7 @@
 <template>
     <div class="country-header-container">
         <v-list class="country-header-list">
-            <v-list-item two-line class="pl-0 ">
+            <v-list-item two-line class="pl-0">
                 <v-list-item-content>
                     <v-list-item-title class="country-name">{{ countryName }} </v-list-item-title>
                     <v-list-item-subtitle class="country-capital">Capital: {{ countryCapital }}</v-list-item-subtitle>
@@ -44,7 +44,7 @@ export default {
     .country-header-list {
         display: flex;
         justify-content: space-between;
-        min-width: 80vw;
+        min-width: 70vw;
         
         @media screen and (min-width: 450px) {
             min-width: 100% !important;
