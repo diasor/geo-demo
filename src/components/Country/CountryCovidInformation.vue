@@ -25,14 +25,26 @@
       <v-row no-gutters class="d-flex justify-space-between flex-wrap mt-3 mb-3">
         <v-col class="d-flex pr-1 flex-shrink-0"> New Cases: </v-col>
         <v-col class="d-flex pr-1 flex-shrink-0"><b>  {{ country.newConfirmedFormat }} </b></v-col>
-        <v-col class="d-flex pr-1 flex-shrink-0"> New Deaths: </v-col>
-        <v-col class="d-flex pr-1 flex-shrink-0"><b> {{ country.newDeathFormat }} </b></v-col>
+        <v-col class="d-flex" />
+        <v-col class="d-flex" />
       </v-row>
       <v-row no-gutters class="d-flex justify-space-between flex-wrap mt-3 mb-3">
-        <v-col class="d-flex pr-1 flex-shrink-0"> Deaths: </v-col>
+        <v-col class="d-flex pr-1 flex-shrink-0"> New Deaths: </v-col>
+        <v-col class="d-flex pr-1 flex-shrink-0"><b> {{ country.newDeathFormat }} </b></v-col>
+        <v-col class="d-flex pr-1 flex-shrink-0"> Total Deaths: </v-col>
         <v-col class="d-flex pr-1 flex-shrink-0"><b> {{ country.todayDeathsFormat }} </b></v-col>
-        <v-col class="d-flex pr-1 flex-shrink-0"> Recovered: </v-col>
+      </v-row>
+      <v-row no-gutters class="d-flex justify-space-between flex-wrap mt-3 mb-3">
+        <v-col class="d-flex pr-1 flex-shrink-0"> New Recovered: </v-col>
+        <v-col class="d-flex pr-1 flex-shrink-0"><b>  {{ country.todayRecovered }} </b></v-col>
+        <v-col class="d-flex pr-1 flex-shrink-0"> Total Recovered: </v-col>
         <v-col class="d-flex pr-1 flex-shrink-0"><b>  {{ country.totalRecovered }} </b></v-col>
+      </v-row>      
+      <v-row no-gutters class="d-flex justify-space-between flex-wrap mt-3 mb-3">
+        <v-col class="d-flex pr-1 flex-shrink-0"> Source: </v-col>
+        <v-col class="d-flex pr-1 flex-shrink-0 justify-start"><b> {{ country.source }} </b></v-col>
+        <v-col class="d-flex" />
+        <v-col class="d-flex" />
       </v-row>
     </v-container>
   </div>

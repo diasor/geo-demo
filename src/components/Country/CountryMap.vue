@@ -7,15 +7,15 @@
     />
     <v-divider class="ml-4 pb-0" />
 
-    <vl-map data-projection="EPSG:4326" style="height: 400px">
+    <vl-map data-projection="EPSG:4326" >
       <vl-view
         :zoom="zoom"
         :center="center"
         :rotation.sync="rotation"
-      ></vl-view>
+      />
 
       <vl-layer-tile>
-        <vl-source-osm></vl-source-osm>
+        <vl-source-osm />
       </vl-layer-tile>
 
       <vl-layer-vector>
@@ -23,7 +23,7 @@
           <vl-feature>
             <vl-geom-point
               :coordinates="feature.geometry.coordinates"
-            ></vl-geom-point>
+            />
           </vl-feature>
 
           <vl-style-box>
@@ -94,5 +94,18 @@ export default {
     margin: 0 4rem;
     padding: 0;
     height: 100%;
+  }
+</style>
+
+<style lang="scss">
+  .ol-unselectable {
+    max-height: 400px !important;
+    overflow: hidden !important;
+  }
+
+  .ol-viewport {
+    border: 1px solid grey !important;
+    border-radius: 5px !important;
+    max-height: 395px !important;
   }
 </style>

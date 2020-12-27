@@ -95,7 +95,9 @@ export default new Vuex.Store({
               todayDeaths: noCovidData ? -1 : covidCountry.today_deaths,
               todayDeathsFormat: noCovidData ? "No Data" : covidCountry.today_deaths.toLocaleString(),
               openCases: noCovidData ? "No Data" : covidCountry.today_open_cases.toLocaleString(),
+              todayRecovered: noCovidData ? " No data" : covidCountry.today_new_recovered.toLocaleString(),
               totalRecovered: noCovidData ? "No Data" : covidCountry.yesterday_recovered.toLocaleString(),
+              source: noCovidData ? "No Data" : covidCountry.source,
               ...iterCountry
             }
           })
