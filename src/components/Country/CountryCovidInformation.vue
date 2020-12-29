@@ -5,7 +5,8 @@
       :countryCapital="country.capital"
       :countryFlag="country.flag"
     />
-    <v-divider class="ml-4 pb-0" />
+    <v-divider class="ml-3 mr-3 pb-0 d-flex justify-center" />
+
 
     <v-container class="ml-1 pb-0">
       <v-row no-gutters>

@@ -5,7 +5,7 @@
       :countryCapital="country.capital"
       :countryFlag="country.flag"
     />
-    <v-divider class="ml-4 pb-0" />
+    <v-divider class="ml-3 mr-3 pb-0 d-flex justify-center" />
 
     <v-container class="ml-1 pb-0">
       <v-row no-gutters class="mt-2">
@@ -114,11 +114,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .country-info-container {
-    display: flex;
-    flex-direction: column;
-    margin: 0 4rem;
-    padding: 0;
-    height: 100%;
-  }
+	.country-info-container {
+		display: flex;
+		flex-direction: column;
+		margin: 0 4rem;
+		padding: 0;
+		height: 100%;
+	}
 </style>

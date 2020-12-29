@@ -4,9 +4,9 @@
             <v-list-item two-line class="pl-0">
                 <v-list-item-content>
                     <v-list-item-title class="country-name">{{ countryName }} </v-list-item-title>
-                    <v-list-item-subtitle class="country-capital">Capital: {{ countryCapital }}</v-list-item-subtitle>
+                    <v-list-item-subtitle class="country-capital">{{ countryCapital }}</v-list-item-subtitle>
                 </v-list-item-content>
-                <v-img   max-height="80" max-width="100" :src="countryFlag" />
+                <v-img max-height="80" max-width="100" :src="countryFlag" />
             </v-list-item>
         </v-list>
     </div>

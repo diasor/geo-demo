@@ -5,9 +5,9 @@
       :countryCapital="country.capital"
       :countryFlag="country.flag"
     />
-    <v-divider class="ml-4 pb-0" />
+    <v-divider class="ml-3 mr-3 pb-0 d-flex justify-center" />
 
-    <vl-map data-projection="EPSG:4326" >
+    <vl-map data-projection="EPSG:4326" class="mt-2 mb-1 d-flex justify-center">
       <vl-view
         :zoom="zoom"
         :center="center"
@@ -98,14 +98,15 @@ export default {
 </style>
 
 <style lang="scss">
-  .ol-unselectable {
-    max-height: 400px !important;
-    overflow: hidden !important;
-  }
+	.ol-unselectable {
+		max-height: 3000px !important;
+		overflow: hidden !important;
+	}
 
-  .ol-viewport {
-    border: 1px solid grey !important;
-    border-radius: 5px !important;
-    max-height: 395px !important;
-  }
+	.ol-viewport {
+		max-width: 98%;
+		border: 1px solid grey !important;
+		border-radius: 5px !important;
+		max-height: 395px !important;
+	}
 </style>
