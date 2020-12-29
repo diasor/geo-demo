@@ -5,9 +5,8 @@
       :countryCapital="country.capital"
       :countryFlag="country.flag"
     />
-    <v-divider class="ml-3 mr-3 pb-0 d-flex justify-center" />
 
-    <v-container class="ml-1 pb-0">
+    <v-container class="ma-0 pa-0">
       <v-row no-gutters class="mt-2">
         <v-col cols="6" md="3"> Region: </v-col>
         <v-col cols="6" md="3"><b> {{ country.region }} </b></v-col>
@@ -36,8 +35,9 @@
       </v-row>
     </v-container>
 
-    <v-card-subtitle class="mb-0 pb-0"><h3>Languages</h3></v-card-subtitle>
-    <v-card-text>
+    <div class="mt-2 ml-0 pb-0"><h3>Languages</h3></div>
+    <!-- <v-card-subtitle class="ma-0 pb-0"><h3>Languages</h3></v-card-subtitle> -->
+    <!-- <v-card-text> -->
       <v-chip-group
         column
         >
@@ -49,10 +49,11 @@
           {{ language.name }}
         </v-chip>
       </v-chip-group>
-    </v-card-text>
+    <!-- </v-card-text> -->
 
-    <v-card-subtitle class="pt-0 mb-0 pb-0"><h3>Borders</h3></v-card-subtitle>
-    <v-card-text>
+    <!-- <v-card-subtitle class="pt-0 mb-0 pb-0"><h3>Borders</h3></v-card-subtitle> -->
+    <div class="mt-2 ml-0 pb-0"><h3>Borders</h3></div>
+    <!-- <v-card-text> -->
       <v-chip-group
         column
         >
@@ -64,10 +65,11 @@
          {{ border }}
         </v-chip>
       </v-chip-group>
-    </v-card-text>
+    <!-- </v-card-text> -->
 
-    <v-card-subtitle class="pt-0 mb-0 pb-0"><h3>Currencies</h3></v-card-subtitle>
-    <v-card-text class="mb-4 pb-4">
+    <!-- <v-card-subtitle class="pt-0 mb-0 pb-0"><h3>Currencies</h3></v-card-subtitle> -->
+    <div class="mt-2 ml-0 pb-0"><h3>Currencies</h3></div>
+    <!-- <v-card-text class="mb-4 pb-4"> -->
       <v-chip-group
         column
         >
@@ -78,7 +80,7 @@
          {{ currency.name }} ({{ currency.symbol }})
         </v-chip>
       </v-chip-group>
-    </v-card-text>
+    <!-- </v-card-text> -->
   </div>
 </template>
 
@@ -113,12 +115,16 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 	.country-info-container {
 		display: flex;
 		flex-direction: column;
-		margin: 0 4rem;
+		margin: 0 4.5rem;
 		padding: 0;
-		height: 100%;
+		height: 100% !important;
+
+		& h3 {
+			font-size: 18px;
+		}
 	}
 </style>

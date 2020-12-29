@@ -1,14 +1,12 @@
 <template>
-    <div class="country-header-container">
-        <v-list class="country-header-list">
-            <v-list-item two-line class="pl-0">
-                <v-list-item-content>
-                    <v-list-item-title class="country-name">{{ countryName }} </v-list-item-title>
-                    <v-list-item-subtitle class="country-capital">{{ countryCapital }}</v-list-item-subtitle>
-                </v-list-item-content>
-                <v-img max-height="80" max-width="100" :src="countryFlag" />
-            </v-list-item>
-        </v-list>
+	<div class="country-header-container">
+		<div class="country-name-container">
+			<div><h1>{{ countryName }} </h1> </div>
+			<div><h2>{{ countryCapital }}</h2></div>
+		</div>
+		<div class="country-flag-container">
+            <img class="country-flag" :src="countryFlag" />
+        </div>
     </div>
 </template>
 
@@ -37,30 +35,54 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .country-header-container {
-        display: flex;
-    }
+	.country-header-container {
+        display: grid;
+		grid-template-columns: 50% 50%;
+		border-bottom: 1px solid lightgrey !important;
+        width: 60vw;
+		margin: 1rem 0;
+		padding-bottom: 1rem;
 
-    .country-header-list {
-        display: flex;
-        justify-content: space-between;
-        min-width: 70vw;
-        
         @media screen and (min-width: 450px) {
             min-width: 100% !important;
         }
     }
 
-    .country-name {
-        font-size: 20px;
-        font-weight: bold;
-        padding-left: 1rem;
-    }
+	.country-name-container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-content: flex-start;
 
-    .country-capital {
-        font-size: 16px;
-        font-weight: bold;
-        padding-top: 1rem;
-        padding-left: 1rem;
-    }
+		& h1 {
+			font-size: 18px;
+			font-weight: bold;
+
+			@media screen and (min-width: 400px) {
+				font-size: 20px;
+			}
+		}
+
+		& h2 {
+			font-size: 16px;
+			font-weight: bold;
+			color: grey;
+		}
+	}
+
+	.country-flag-container {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+	}
+
+	.country-flag {
+		max-height: 80px;
+		max-width: 80px;
+
+		@media screen and (min-width: 400px) {
+			max-height: 80px;
+			max-width: 100px;
+		}
+	}
 </style>
