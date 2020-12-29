@@ -1,5 +1,5 @@
 module.exports = {
   transpileDependencies: ["vuetify"],
   publicPath: "",
-  outputDir:  "world-countries"
+  outputDir:  "covid19-tracker"
 }
