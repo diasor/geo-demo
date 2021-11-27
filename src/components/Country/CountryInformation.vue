@@ -8,21 +8,21 @@
 	<v-container class="ma-0 pa-0">
 		<v-row no-gutters class="mt-2">
 			<v-col cols="6" md="3"> Official name: </v-col>
-			<v-col cols="6" md="3"><b> {{ country.officialName }} </b></v-col>
+			<v-col cols="6" md="9"><b> {{ country.officialName }} </b></v-col>
 		</v-row>
 		<v-row no-gutters class="mt-2">
 			<v-col cols="6" md="3"> Region: </v-col>
 			<v-col cols="6" md="3"><b> {{ country.region }} </b></v-col>
 			<v-col cols="6" md="3"> SubRegion: </v-col>
-			<v-col cols="6" md="3"><b>  {{ country.subRegion }} </b></v-col>
+			<v-col cols="6" md="3"><b>  {{ country.subregion }} </b></v-col>
 		</v-row>
 		<v-row no-gutters class="mt-2">
 			<v-col cols="6" md="3"> Calling code: </v-col>
-			<v-col cols="6" md="3"> {{ country.callingCodes }} </v-col>
+			<v-col cols="6" md="9"><b> {{ country.callingCodes }} </b></v-col>
 		</v-row>
 		<v-row no-gutters class="mt-2">
 			<v-col cols="6" md="3"> Coordinates: </v-col>
-			<v-col cols="6" md="3"><b> {{ country.latlng }} </b></v-col>  
+			<v-col cols="6" md="9"><b> {{ country.latlng }} </b></v-col>  
 		</v-row>
 	</v-container>
 
@@ -48,7 +48,8 @@
           :key="i"
           class="ml-0"
         >
-         {{ border }}
+			{{ border.name }}
+			<span class="pl-2">{{ border.flag }}</span>
         </v-chip>
       </v-chip-group>
 

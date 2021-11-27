@@ -32,6 +32,7 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex"
+import { forEach } from "lodash"
 import CountryInformation from "@/components/Country/CountryInformation"
 import CountryCovidInformation from "@/components/Country/CountryCovidInformation"
 import CountryMap from "@/components/Country/CountryMap"
@@ -55,16 +56,17 @@ export default {
 		...mapGetters(["currentCountry", "getCountryByCode"]),
 		
 		countryBorders() {
-			let borderNames = []
+			let borders = []
 			if (this.currentCountry &&
 				this.currentCountry.borders &&
 				this.currentCountry.borders.length > 0)
 			{
-				this.currentCountry.borders.forEach((countryCode) => {
-					borderNames.push(this.getCountryByCode(countryCode).name)
+				forEach(this.currentCountry.borders, (countryCode) => {
+					const border = this.getCountryByCode(countryCode);
+					borders.push(border)
 				})
 			}
-			return borderNames
+			return borders
 		},
 	},
 	

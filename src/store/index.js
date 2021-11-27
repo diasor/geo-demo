@@ -1,30 +1,28 @@
 import Vue from "vue"
 import Vuex from "vuex"
+import { find, map } from "lodash"
 import api from "@/api/countryApi"
-import countryList from "./countryList.json";
+import countryList from "./countryList.json"
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
-    countryList: [],
-    currentCountry: {
-      name: "",
-      alpha2Code: "",
-      alpha3Code: "",
-      capital: "",
-      region: "",
-      subregion: "",
-      population: 0,
-      latlng: [],
-      area: 0,
-      timezones: [],
-      borders: [],
-      numericCode: "",
-      currencies: [],
-      languages: [],
-      flag: "",
-      demonym: "",
+	state: {
+		countryList: [],
+		currentCountry: {	  
+			name: "",
+			officialName: "",
+			cca2: "",
+			capital: "",
+			region: "",
+			subregion: "",
+			languages: {},
+			latlng: [],
+			borders: [],
+			callingCodes: "",
+			currencies: [],
+			flag: "",
+			cioc: ""
     },
     mostCOVIDInfectedCountries: [],
     covidDate: "",
@@ -34,12 +32,7 @@ export default new Vuex.Store({
     allCountries: (state) => state.countryList,
     currentCountry: (state) => state.currentCountry,
     mostCOVIDInfectedCountries: (state) => state.mostCOVIDInfectedCountries,
-    getCountryByCode(state) {
-      return (code) =>
-        state.countryList.find((item) => {
-          return item.alpha3Code === code
-        })
-    },
+    getCountryByCode: (state) => (code) => find(state.countryList, (country) => country.cioc === code),
     covidDate: (state) => state.covidDate,
   },
 
@@ -65,7 +58,7 @@ export default new Vuex.Store({
     async fetchCountries({ state, commit }) {
       if (state.countryList.length === 0) {
 		const covidDate = new Date().toISOString().split('T')[0]
-		const countries = countryList.map((iterCountry) => {
+		const countries = map(countryList, (iterCountry) => {
 			const currencies = [];
 			const noData = "No data available"
 			Object
@@ -77,38 +70,42 @@ export default new Vuex.Store({
 				cca2: iterCountry.cca2,
 				capital: iterCountry.capital[0],
 				region: iterCountry.region ? iterCountry.region : noData,
-				subRegion: iterCountry.subRegion ? iterCountry.subRegion: noData,
+				subregion: iterCountry.subregion ? iterCountry.subregion: noData,
 				languages: { ...iterCountry.languages },
 				latlng: iterCountry.latlng,
-				borders: { ...iterCountry.borders },
+				borders: [ ...iterCountry.borders ],
 				callingCodes: iterCountry.callingCodes[0],
 				currencies,
-				flag: iterCountry.flag
+				flag: iterCountry.flag,
+				cioc: iterCountry.cioc
 			} 
 		})
 		commit("SET_COUNTRY_LIST", countries);
 
-		return api.getCountryCovidInformation(covidDate)
-		.then(covidResponse => {
-			const covidPerCountry = covidResponse.data.dates[covidDate].countries
-			const countries = state.countryList.map((iterCountry) => {
-				let covidCountry = covidPerCountry[iterCountry.name]
+		try {
+			const covidResponse = await api.getCountryCovidInformation(covidDate)
+			const countriesWithCovidInformation = map(countries, (iterCountry) => {
+				let covidDataByDates = covidResponse.data.dates[covidDate]
+				let covidCountry = covidDataByDates.countries[iterCountry.name]
 				const noCovidData = (covidCountry === undefined)
 				return {
+					todayConfirmed: noCovidData ? -1 : covidCountry.today_confirmed,
 					newConfirmed: noCovidData ? -1 : covidCountry.today_new_confirmed,
 					newConfirmedFormat: noCovidData ? "No Data" : covidCountry.today_new_confirmed.toLocaleString(),
-					todayConfirmed: noCovidData ? -1 : covidCountry.today_confirmed,
 					todayDeaths: noCovidData ? -1 : covidCountry.today_deaths,
 					todayDeathsFormat: noCovidData ? "No Data" : covidCountry.today_deaths.toLocaleString(),
 					openCases: noCovidData ? "No Data" : covidCountry.today_open_cases.toLocaleString(),
 					todayRecovered: noCovidData ? " No data" : covidCountry.today_recovered.toLocaleString(),
 					source: noCovidData ? "No Data" : covidCountry.source,
-					...iterCountry
+					...iterCountry	
 				}
 			})
-			commit("SET_COUNTRY_LIST", countries)
+			commit("SET_COUNTRY_LIST", countriesWithCovidInformation)
 			commit("SET_COVID_DATE", covidDate)
-        })
+			return countriesWithCovidInformation;
+		} catch (error) {
+			throw new Error("The COVID 19 data service has failed. Please try again later.")
+		}
       }
     },
 

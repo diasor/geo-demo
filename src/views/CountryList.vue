@@ -25,6 +25,18 @@
 				/>
 			</template>
 		</v-data-table>
+		<v-alert
+			:value="showAlert"
+			border="top"
+			class="mt-3"
+			colored-border
+			:type="alertType"
+			elevation="2"
+			transition="scale-transition"
+			dismissible
+			@click="closeAlert"
+			>	{{ alertMessage }}
+		</v-alert>
 	</div>
 </template>
 
@@ -37,7 +49,10 @@ export default {
 	
 	data() {
 		return {
-			search: ''
+			search: '',
+			alertType: "success",
+			showAlert: false,
+			alertMessage: "",
 		}
 	},
 	
@@ -59,7 +74,13 @@ export default {
 	},
 	
 	mounted() {
-		this.fetchCountries()
+		try {
+			this.fetchCountries()
+		} catch (error) {
+			this.alertMessage = error
+			this.showAlert = true
+			this.alertType = "error"
+		}
 	},
 	
 	methods: {
@@ -91,6 +112,12 @@ export default {
 		
 		covidColor(covidNumber) {
 			return getCovidColor(covidNumber)
+		},
+
+		closeAlert() {
+			this.alertMessage = ""
+			this.showAlert = false
+			this.alertType = "success"
 		}
 	}
 }
