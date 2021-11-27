@@ -113,7 +113,7 @@ export default new Vuex.Store({
 		if (state.countryList.length === 0) {
 			await dispatch("fetchCountries")
 		}
-		const country = state.countryList.find((item) => item.cca2 === code)
+		const country = find(state.countryList, (item) => item.cca2 === code)
 		commit("SET_CURRENT_COUNTRY", country)
     },
 

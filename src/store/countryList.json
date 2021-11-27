@@ -299,7 +299,7 @@
 		],
 		"landlocked": true,
 		"borders": [
-			"IRN",
+			"IRI",
 			"PAK",
 			"TKM",
 			"UZB",
@@ -460,9 +460,9 @@
 		],
 		"landlocked": false,
 		"borders": [
-			"COG",
 			"COD",
-			"ZMB",
+			"COD",
+			"ZAM",
 			"NAM"
 		],
 		"area": 1246700,
@@ -1396,9 +1396,9 @@
 		"borders": [
 			"BOL",
 			"BRA",
-			"CHL",
-			"PRY",
-			"URY"
+			"CHI",
+			"PAR",
+			"URU"
 		],
 		"area": 2780400,
 		"flag": "\ud83c\udde6\ud83c\uddf7",
@@ -1557,7 +1557,7 @@
 		"borders": [
 			"AZE",
 			"GEO",
-			"IRN",
+			"IRI",
 			"TUR"
 		],
 		"area": 29743,
@@ -2629,7 +2629,7 @@
 		"borders": [
 			"ARM",
 			"GEO",
-			"IRN",
+			"IRI",
 			"RUS",
 			"TUR"
 		],
@@ -5057,8 +5057,8 @@
 		"borders": [
 			"ARG",
 			"BRA",
-			"CHL",
-			"PRY",
+			"CHI",
+			"PAR",
 			"PER"
 		],
 		"area": 1098581,
@@ -5374,10 +5374,10 @@
 			"COL",
 			"GUF",
 			"GUY",
-			"PRY",
+			"PAR",
 			"PER",
 			"SUR",
-			"URY",
+			"URU",
 			"VEN"
 		],
 		"area": 8515767,
@@ -6155,7 +6155,7 @@
 		"borders": [
 			"NAM",
 			"ZAF",
-			"ZMB",
+			"ZAM",
 			"ZWE"
 		],
 		"area": 582000,
@@ -6320,7 +6320,7 @@
 			"CMR",
 			"TCD",
 			"COD",
-			"COG",
+			"COD",
 			"SSD",
 			"SDN"
 		],
@@ -7463,7 +7463,7 @@
 		"borders": [
 			"CAF",
 			"TCD",
-			"COG",
+			"COD",
 			"GNQ",
 			"GAB",
 			"NGA"
@@ -7647,12 +7647,12 @@
 			"AGO",
 			"BDI",
 			"CAF",
-			"COG",
+			"COD",
 			"RWA",
 			"SSD",
 			"TZA",
 			"UGA",
-			"ZMB"
+			"ZAM"
 		],
 		"area": 2344858,
 		"flag": "\ud83c\udde8\ud83c\udde9",
@@ -7694,7 +7694,7 @@
 		],
 		"cca2": "CG",
 		"ccn3": "178",
-		"cca3": "COG",
+		"cca3": "COD",
 		"cioc": "CGO",
 		"independent": true,
 		"status": "officially-assigned",
@@ -12750,7 +12750,7 @@
 		"landlocked": false,
 		"borders": [
 			"CMR",
-			"COG",
+			"COD",
 			"GNQ"
 		],
 		"area": 267668,
@@ -17415,7 +17415,7 @@
 		],
 		"landlocked": false,
 		"borders": [
-			"IRN",
+			"IRI",
 			"JOR",
 			"KWT",
 			"SAU",
@@ -24302,7 +24302,7 @@
 			"ZAF",
 			"SWZ",
 			"TZA",
-			"ZMB",
+			"ZAM",
 			"ZWE"
 		],
 		"area": 801590,
@@ -25072,7 +25072,7 @@
 		"borders": [
 			"MOZ",
 			"TZA",
-			"ZMB"
+			"ZAM"
 		],
 		"area": 118484,
 		"flag": "\ud83c\uddf2\ud83c\uddfc",
@@ -25578,7 +25578,7 @@
 			"AGO",
 			"BWA",
 			"ZAF",
-			"ZMB"
+			"ZAM"
 		],
 		"area": 825615,
 		"flag": "\ud83c\uddf3\ud83c\udde6",
@@ -27605,7 +27605,7 @@
 			"AFG",
 			"CHN",
 			"IND",
-			"IRN"
+			"IRI"
 		],
 		"area": 881912,
 		"flag": "\ud83c\uddf5\ud83c\uddf0",
@@ -28076,7 +28076,7 @@
 		"borders": [
 			"BOL",
 			"BRA",
-			"CHL",
+			"CHI",
 			"COL",
 			"ECU"
 		],
@@ -35926,7 +35926,7 @@
 			"BGR",
 			"GEO",
 			"GRC",
-			"IRN",
+			"IRI",
 			"IRQ",
 			"SYR"
 		],
@@ -36401,7 +36401,7 @@
 			"MOZ",
 			"RWA",
 			"UGA",
-			"ZMB"
+			"ZAM"
 		],
 		"area": 945087,
 		"flag": "\ud83c\uddf9\ud83c\uddff",
@@ -36902,7 +36902,7 @@
 		],
 		"cca2": "UY",
 		"ccn3": "858",
-		"cca3": "URY",
+		"cca3": "URU",
 		"cioc": "URU",
 		"independent": true,
 		"status": "officially-assigned",

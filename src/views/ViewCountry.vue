@@ -62,8 +62,10 @@ export default {
 				this.currentCountry.borders.length > 0)
 			{
 				forEach(this.currentCountry.borders, (countryCode) => {
-					const border = this.getCountryByCode(countryCode);
-					borders.push(border)
+					const border = this.getCountryByCode(countryCode)
+					if (border) {
+						borders.push(border)
+					}
 				})
 			}
 			return borders
