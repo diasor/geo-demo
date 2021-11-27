@@ -1,11 +1,9 @@
 import axios from "axios"
+const COVID_API = "https://api.covid19tracking.narrativa.com/api";
 
 export default {
-  getCountryList() {
-    return axios.get("https://restcountries.eu/rest/v2/all")
-  },
-
   getCountryCovidInformation(covidDate){
-    return axios.get(`https://api.covid19tracking.narrativa.com/api/${covidDate}`)
+	const covidUri = `${COVID_API}?date_from=${covidDate}&date_to=${covidDate}`;
+	return axios.get(covidUri);
   }
 }

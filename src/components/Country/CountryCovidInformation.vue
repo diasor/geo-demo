@@ -13,7 +13,7 @@
 				<v-col cols="6" md="3" class="mt-2"> Total Cases: </v-col>
 				<v-col cols="6" md="3" class="mt-2">
 					<v-chip
-						:color="populationColor(country.todayConfirmed)"
+						:color="countryCovidColor(country.todayConfirmed)"
 						dark
 					>
 						{{ country.todayConfirmedFormat }}
@@ -27,16 +27,12 @@
 				<v-col />
 			</v-row>
 			<v-row no-gutters>
-				<v-col cols="6" md="3" class="mt-2"> New Deaths: </v-col>
-				<v-col cols="6" md="3" class="mt-2"><b> {{ country.newDeathFormat }} </b></v-col>
 				<v-col cols="6" md="3" class="mt-2"> Total Deaths: </v-col>
 				<v-col cols="6" md="3" class="mt-2"><b> {{ country.todayDeathsFormat }} </b></v-col>
 			</v-row>
 			<v-row no-gutters>
-				<v-col cols="6" md="3" class="mt-2"> New Recovered: </v-col>
+				<v-col cols="6" md="3" class="mt-2"> Today Recovered: </v-col>
 				<v-col cols="6" md="3" class="mt-2"><b>  {{ country.todayRecovered }} </b></v-col>
-				<v-col cols="6" md="3" class="mt-2"> Total Recovered: </v-col>
-				<v-col cols="6" md="3" class="mt-2"><b>  {{ country.totalRecovered }} </b></v-col>
 			</v-row>      
 			<v-row no-gutters>
 				<v-col cols="6" md="3" class="mt-2"> Source: </v-col>
@@ -67,7 +63,7 @@ export default {
 	},
 
 	methods: {
-		populationColor(covidNumber) {
+		countryCovidColor(covidNumber) {
 			return getCovidColor(covidNumber);
 		}
 	}

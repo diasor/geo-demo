@@ -56,7 +56,10 @@ export default {
 		
 		countryBorders() {
 			let borderNames = []
-			if (this.currentCountry && this.currentCountry.borders) {
+			if (this.currentCountry &&
+				this.currentCountry.borders &&
+				this.currentCountry.borders.length > 0)
+			{
 				this.currentCountry.borders.forEach((countryCode) => {
 					borderNames.push(this.getCountryByCode(countryCode).name)
 				})
@@ -66,7 +69,7 @@ export default {
 	},
 	
 	async created() {
-		if (this.currentCountry.name === "") {
+		if (!this.currentCountry.name) {
 			this.showCountry = false
 			const alpha2Code = this.$route.params.code
 			await this.setCurrentCountry(alpha2Code)

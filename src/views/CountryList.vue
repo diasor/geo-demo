@@ -9,14 +9,6 @@
 			:search="search"
 			:custom-filter="filterText"
 		>
-			<template v-slot:item.population="{ item }">
-				<v-chip
-					:color="populationColor(item.population)"
-					dark
-				>
-					{{ item.population.toLocaleString() }}
-				</v-chip>
-			</template>
 			<template v-slot:item.todayConfirmed="{ item }">
 				<v-chip
 					:color="covidColor(item.todayConfirmed)"
@@ -54,12 +46,13 @@ export default {
 		
 		headers() {
 			return [
-				{ text: "Code", align: "start", sortable: true, value: "alpha2Code" },
+				{ text: "Code", align: "start", sortable: true, value: "cca2" },
+				{ text: "Flag", align: "start", sortable: false, value: "flag" },
 				{ text: "Name", value: "name", sortable: true },
 				{ text: "Region", value: "region" },
 				{ text: "Capital", value: "capital" },
-				{ text: "Population", value: "population" },
-				{ text: " COVID Cases", value: "todayConfirmed",  sortable: true },
+				{ text: "Phone prefix", value: "callingCodes" },
+				{ text: "COVID Cases", value: "todayConfirmed",  sortable: true },
 				{ text: "COVID Deaths", value: "todayDeathsFormat",  sortable: true }
 			]
 		}
@@ -86,10 +79,10 @@ export default {
 				)
 		},
 		
-		viewCountry(country) {
+		async viewCountry(country) {
 			if (!country) return
-			this.setCurrentCountry(country.alpha2Code)
-			this.$router.push({ path: `/country/${country.alpha2Code}` })
+			await this.setCurrentCountry(country.cca2)
+			this.$router.push({ path: `/country/${country.cca2}` })
 		},
 		
 		populationColor(population) {

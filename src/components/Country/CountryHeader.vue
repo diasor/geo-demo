@@ -4,8 +4,8 @@
 			<div><h1>{{ countryName }} </h1> </div>
 			<div><h2>{{ countryCapital }}</h2></div>
 		</div>
-		<div class="country-flag-container">
-            <img class="country-flag" :src="countryFlag" />
+		<div class="country-flag">
+			<span>{{ countryFlag }}</span>
         </div>
     </div>
 </template>
@@ -70,19 +70,12 @@ export default {
 		}
 	}
 
-	.country-flag-container {
+	.country-flag {
 		display: flex;
 		flex-direction: row;
 		justify-content: flex-end;
-	}
-
-	.country-flag {
-		max-height: 80px;
-		max-width: 80px;
-
-		@media screen and (min-width: 400px) {
-			max-height: 80px;
-			max-width: 100px;
+		span {
+			font-size: 80px;
 		}
 	}
 </style>

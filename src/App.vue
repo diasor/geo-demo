@@ -48,7 +48,7 @@
       </v-btn>
     </v-app-bar>
 
-    <v-main>
+    <v-main class="d-flex flex-wrap">
       <v-container>
         <router-view></router-view>
       </v-container>
@@ -77,17 +77,25 @@ export default {
 </script>
 
 <style lang="scss">
-  .text-small-devices {
-    display: none !important;
-    width: 0 !important;
+	.text-small-devices {
+		display: none !important;
+		width: 0 !important;
 
-    @media screen and (min-width: 450px) {
-      display: flex !important;
-      width: auto !important;
-    }
-  }
+		@media screen and (min-width: 450px) {
+			display: flex !important;
+			width: auto !important;
+		}
+	}
 
-  .release-icon {
-    padding-left: 5px;
-  }
+	.release-icon {
+		padding-left: 5px;
+	}
+
+	.v-item-group {
+		// height: 0;
+		padding-left: 0 !important;
+		justify-content: flex-start !important;
+		// overflow: hidden;
+		// font-weight: bold;
+	}
 </style>
