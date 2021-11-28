@@ -2,7 +2,7 @@ import Vue from "vue"
 import Vuex from "vuex"
 import { find, map } from "lodash"
 import api from "@/api/countryApi"
-import countryList from "./countryList.json"
+import countryList from "./data/countryList.json"
 
 Vue.use(Vuex)
 
@@ -23,27 +23,53 @@ export default new Vuex.Store({
 			currencies: [],
 			flag: "",
 			cioc: ""
-    },
-    mostCOVIDInfectedCountries: [],
-    covidDate: "",
+		},
+		currentCountryPopulation: {
+			cca2: "",
+			name: "",
+			pop2021: "",
+			pop2020: "",
+			pop2050: "",
+			pop2030: "",
+			pop2019: "",
+			pop2015: "",
+			pop2010: "",
+			pop2000: "",
+			pop1990: "",
+			pop1980: "",
+			pop1970: "",
+			area: 0,
+			density: "0",
+			growthRate: "0",
+			worldPercentage: "",
+			rank: 0
+		},
+		mostCOVIDInfectedCountries: [],
+		covidDate: "",
   },
 
   getters: {
     allCountries: (state) => state.countryList,
     currentCountry: (state) => state.currentCountry,
     mostCOVIDInfectedCountries: (state) => state.mostCOVIDInfectedCountries,
-    getCountryByCode: (state) => (code) => find(state.countryList, (country) => country.cioc === code),
+	getCountryByCode: (state) => 
+		(code) => find(state.countryList, (country) => country.cioc === code),
+	currentPopulation: (state) => state.currentCountryPopulation,
     covidDate: (state) => state.covidDate,
   },
 
   mutations: {
     SET_COUNTRY_LIST(state, countries) {
       state.countryList = countries
-    },
+	},
 
     SET_CURRENT_COUNTRY(state, country) {
 		state.currentCountry = { ...country }
-    },
+	},
+	
+	SET_CURRENT_COUNTRY_POPULATION(state, countryPopulation) {
+		state.currentCountryPopulation = { ...countryPopulation }
+	},
 
     SET_MOST_INFECTED_LIST(state, countries) {
 		state.mostCOVIDInfectedCountries = countries
@@ -115,6 +141,10 @@ export default new Vuex.Store({
 		}
 		const country = find(state.countryList, (item) => item.cca2 === code)
 		commit("SET_CURRENT_COUNTRY", country)
+
+		const populationFileName = `./data/${country.cioc}.json`
+		const countryPopulation = await import(`${populationFileName}`)
+		commit("SET_CURRENT_COUNTRY_POPULATION", countryPopulation)
     },
 
     async generateMostInfected({ state, commit, dispatch }) {
@@ -122,7 +152,6 @@ export default new Vuex.Store({
       if (state.countryList.length === 0) {
         await dispatch("fetchCountries")
         countryList = filterAndOrderInfected(state.countryList)
-
       } 
       countryList = filterAndOrderInfected(state.countryList)
       commit("SET_MOST_INFECTED_LIST", countryList)

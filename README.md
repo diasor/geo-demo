@@ -7,7 +7,6 @@ This application provides the list of the world countries. It allows the user to
 - population and area
 - flag
 - languages
-- timezones
 - borders
 
 Also the application shows an interactive map of the country.

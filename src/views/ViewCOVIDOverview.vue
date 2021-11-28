@@ -17,7 +17,7 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex"
-import BarChart from "@/components/Charts/BarChart.vue"
+import BarChart from "@/components/charts/BarChart.vue"
 
 export default {
 	name: "ViewCOVIDOverview",

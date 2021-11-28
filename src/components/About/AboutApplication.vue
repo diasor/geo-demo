@@ -13,13 +13,16 @@
 				<li>population and area</li>
 				<li>flag</li>
 				<li>languages</li>
-				<li>timezones</li>
 				<li>borders</li>
 			</ul>
 		</v-card-text>
 
 		<v-card-title>Map</v-card-title>
-		<v-card-text>Also the application shows an interactive map of the country.</v-card-text>
+		<v-card-text>The application shows an interactive map of the country.</v-card-text>
+		<v-card-text>Also the application shows a set of historical population data per country.
+			The source for this data is <a href="https://worldpopulationreview.com/country-rankings/country-codes">Worl population review</a>
+		</v-card-text>
+		
 		
 		<v-card-title>COVID19 Information</v-card-title>
 		<v-card-text> The application is connected to an API that has online information about 

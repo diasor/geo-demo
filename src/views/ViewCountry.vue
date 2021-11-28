@@ -1,7 +1,7 @@
 <template>
 	<v-card  
 		v-if="showCountry" 
-		class="ma-0 pa-0"
+		class="ma-0 mt-4 pa-0"
 	>
 		<v-carousel
 			hide-delimiters
@@ -17,8 +17,12 @@
 				/>
 			</v-carousel-item>
 			<v-carousel-item class="ma-2 pa-0"> 
-				<country-covid-information
+				<country-covid-information :country="currentCountry" />
+			</v-carousel-item>
+			<v-carousel-item class="ma-2 pa-0"> 
+				<country-population
 					:country="currentCountry"
+					:countryPopulation="currentPopulation"
 				/>
 			</v-carousel-item>
 			<v-carousel-item class="ma-0 pa-0">
@@ -33,9 +37,10 @@
 <script>
 import { mapGetters, mapActions } from "vuex"
 import { forEach } from "lodash"
-import CountryInformation from "@/components/Country/CountryInformation"
-import CountryCovidInformation from "@/components/Country/CountryCovidInformation"
-import CountryMap from "@/components/Country/CountryMap"
+import CountryInformation from "@/components/country/CountryInformation"
+import CountryCovidInformation from "@/components/country/CountryCovidInformation"
+import CountryMap from "@/components/country/CountryMap"
+import CountryPopulation from "@/components/country/CountryPopulation"
 
 export default {
 	name: "ViewCountry",
@@ -44,6 +49,7 @@ export default {
 		CountryInformation,
 		CountryCovidInformation,
 		CountryMap,
+		CountryPopulation
 	},
 	
 	data: () => ({
@@ -53,7 +59,7 @@ export default {
 	}),
 	
 	computed: {
-		...mapGetters(["currentCountry", "getCountryByCode"]),
+		...mapGetters(["currentCountry", "getCountryByCode", "currentPopulation"]),
 		
 		countryBorders() {
 			let borders = []

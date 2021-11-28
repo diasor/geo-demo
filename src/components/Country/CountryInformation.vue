@@ -1,10 +1,10 @@
 <template>
 	<div class="country-info-container">
 		<country-header
-		:countryName="country.name"
-		:countryCapital="country.capital"
-		:countryFlag="country.flag"
-    />
+			:countryName="country.name"
+			:countryCapital="country.capital"
+			:countryFlag="country.flag"
+		/>
 	<v-container class="ma-0 pa-0">
 		<v-row no-gutters class="mt-2">
 			<v-col cols="6" md="3"> Official name: </v-col>

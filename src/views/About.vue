@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import AboutApplication from "@/components/About/AboutApplication.vue"
-import AboutAuthor from "@/components/About/AboutAuthor.vue"
+import AboutApplication from "@/components/about/AboutApplication.vue"
+import AboutAuthor from "@/components/about/AboutAuthor.vue"
 
 export default {
 	name: "About",

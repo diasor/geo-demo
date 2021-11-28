@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import CountryHeader from "./CountryHeader.vue"
+import CountryHeader from "./CountryHeader"
 
 export default {
 	name: "CountryMap",
