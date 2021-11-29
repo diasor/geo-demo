@@ -20,7 +20,11 @@
 		<v-card-title>Map</v-card-title>
 		<v-card-text>The application shows an interactive map of the country.</v-card-text>
 		<v-card-text>Also the application shows a set of historical population data per country.
-			The source for this data is <a href="https://worldpopulationreview.com/country-rankings/country-codes">Worl population review</a>
+			The source for this data is 
+			<a href="https://worldpopulationreview.com/country-rankings/country-codes">
+				World population review
+			</a> and 
+			<a href="https://population.un.org/wpp/DataSources/">UN Nations</a>
 		</v-card-text>
 		
 		
